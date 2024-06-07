@@ -38,7 +38,7 @@ def app():
         st.session_state.messages = [
             {
                 "role": "system",
-                "content": "Witaj. Jestem Arystoteles. Czy jestes gotów porozmawiac o sylogizmach i wnioskowaniu?"
+                "content": "Greetings. I am Aristotle. Are you ready to discuss syllogisms and logic?"
             },
             {
                 "role": "system",
@@ -57,24 +57,24 @@ def app():
     with col1:
         st.image("images/aristotle_marble_round.png", use_column_width=True)
     with col2:
-        st.title("Rozmowa z Arystotelesem")
-        st.markdown("<small>JGB 2024 index: 51670 Logika</small>", unsafe_allow_html=True)
+        st.title("Chat with Aristotle")
+        st.markdown("<small>JB 2024 index: 51670 logic</small>", unsafe_allow_html=True)
 
     # Display the initial message from Aristotle
     if len(st.session_state.messages) == 2:
-        st.write ("Witaj. Jestem Arystoteles. Czy jestes gotów porozmawiac o sylogizmach i wnioskowaniu?")
+        st.write ("Greetings. I am Aristotle. Are you ready to discuss syllogisms and logic?")
 
     # Display conversation history
     for message in st.session_state.messages[2:]:
         if message["role"] == "user":
-            st.write("Ty: " + message["content"])
+            st.write("You: " + message["content"])
         else:
-            st.write("Arystoteles: " + message["content"])
+            st.write("Aristotle: " + message["content"])
 
     # User input
-    user_input = st.text_input("Twoja odpowiedz:", key="_user_input", on_change=keep, args=["user_input"])
+    user_input = st.text_input("Your answer:", key="_user_input", on_change=keep, args=["user_input"])
 
-    if st.button("Wyslij"):
+    if st.button("Send"):
         if user_input:
             # Append user input to messages
             st.session_state.messages.append({"role": "user", "content": st.session_state.user_input})
